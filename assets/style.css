@@ -82,7 +82,7 @@ h2::after {
 .bar {
     display:flex;
     align-items:center;
-    gap:16px;
+    gap:46px;
     min-height:68px;
 }
 
@@ -111,7 +111,7 @@ nav {
 
 nav ul {
     display:flex;
-    gap:18px;
+    gap:25px;
     list-style:none;
     margin:0;
     padding:0;
@@ -680,4 +680,39 @@ blockquote {
     height:auto;
     border-radius:18px;
     box-shadow:0 0 0 0px var(--o),0 14px 32px rgba(219,149,67,.25);
+}
+
+/* Our Programs CSS  */
+
+.g4{grid-template-columns:repeat(4,1fr)}
+.online-card{display:block;position:relative;text-decoration:none;color:inherit;transition:.2s}
+.online-card:hover{transform:translateY(-4px);border-color:var(--t);box-shadow:0 10px 26px rgba(33,150,183,.2)}
+.online-card .tagline{color:var(--mut);font-size:.95rem;margin:.2em 0 .6em}
+.online-card .o-price{color:var(--od);font-weight:700;margin:.4em 0}
+.online-card .go{color:var(--td);font-weight:600}
+.online-card:hover .go{text-decoration:underline}
+.o-badge{position:absolute;top:14px;right:14px;background:var(--t);color:#fff;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:999px}
+@media(max-width:900px){.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.g4{grid-template-columns:1fr}}
+
+/* Navbar CSS submenu  */
+
+.has-sub{position:relative}
+.sub-toggle{background:none;border:0;padding:0;font:inherit;font-weight:500;color:inherit;cursor:pointer;display:flex;align-items:center;gap:6px}
+.sub-toggle:hover{color:var(--od)}
+.sub-toggle::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.has-sub.open>.sub-toggle::after{transform:rotate(-135deg) translateY(-2px)}
+.sub-menu{display:none;flex-direction:column;gap:0;list-style:none;margin:0;padding:8px;background:#fff;border:1px solid #f0e2cf;border-radius:12px;box-shadow:0 12px 28px rgba(43,29,14,.14);position:absolute;top:100%;left:0;min-width:240px;z-index:70}
+.sub-menu a{display:block;padding:10px 14px;border-radius:8px;white-space:nowrap}
+.sub-menu a:hover{background:var(--alt);color:var(--td)}
+.has-sub.open>.sub-menu{display:flex}
+@media(min-width:901px){
+  .has-sub::after{content:"";position:absolute;left:0;right:0;top:100%;height:14px}
+  .has-sub:hover>.sub-menu,.has-sub:focus-within>.sub-menu{display:flex}
+  .has-sub:hover>.sub-toggle::after{transform:rotate(-135deg) translateY(-2px)}
+}
+@media(max-width:900px){
+  .sub-toggle{width:100%;justify-content:space-between}
+  .sub-menu{position:static;box-shadow:none;border:0;border-left:3px solid var(--t);border-radius:0;margin:8px 0 0 4px;padding:0 0 0 12px;min-width:0}
+  .sub-menu a{padding:9px 6px;white-space:normal}
 }

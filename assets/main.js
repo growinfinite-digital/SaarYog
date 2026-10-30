@@ -75,3 +75,19 @@
         });
     });
 })();
+
+(function(){
+  var subs=document.querySelectorAll(".has-sub");
+  function closeAll(){subs.forEach(function(li){li.classList.remove("open");li.querySelector(".sub-toggle").setAttribute("aria-expanded","false")})}
+  subs.forEach(function(li){
+    var b=li.querySelector(".sub-toggle");
+    b.addEventListener("click",function(e){
+      e.stopPropagation();
+      if(!window.matchMedia("(max-width:900px), (hover:none)").matches)return; // desktop uses hover
+      var o=!li.classList.contains("open");closeAll();
+      li.classList.toggle("open",o);b.setAttribute("aria-expanded",o);
+    });
+  });
+  document.addEventListener("click",closeAll);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeAll()});
+})();
