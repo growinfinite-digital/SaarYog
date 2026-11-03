@@ -91,3 +91,17 @@
   document.addEventListener("click",closeAll);
   document.addEventListener("keydown",function(e){if(e.key==="Escape")closeAll()});
 })();
+
+var bd=document.createElement("div");bd.className="nav-backdrop";document.body.appendChild(bd);
+function setNav(o){
+  n.classList.toggle("open",o);bd.classList.toggle("show",o);
+  document.body.classList.toggle("nav-open",o);b.setAttribute("aria-expanded",o);
+  if(!o)document.querySelectorAll(".has-sub.open").forEach(function(li){
+    li.classList.remove("open");li.querySelector(".sub-toggle").setAttribute("aria-expanded","false");
+  });
+}
+b.addEventListener("click",function(e){e.stopPropagation();setNav(!n.classList.contains("open"))});
+bd.addEventListener("click",function(){setNav(false)});
+n.addEventListener("click",function(e){if(e.target.closest("a"))setNav(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")setNav(false)});
+window.addEventListener("resize",function(){if(window.innerWidth>900)setNav(false)});

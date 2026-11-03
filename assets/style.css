@@ -716,3 +716,16 @@ blockquote {
   .sub-menu{position:static;box-shadow:none;border:0;border-left:3px solid var(--t);border-radius:0;margin:8px 0 0 4px;padding:0 0 0 12px;min-width:0}
   .sub-menu a{padding:9px 6px;white-space:normal}
 }
+
+@media(max-width:900px){
+  /* menu stays inside the screen and scrolls on its own */
+  nav{position:fixed;top:68px;left:0;right:0;z-index:55;
+      max-height:calc(100vh - 68px);max-height:calc(100dvh - 68px);
+      overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+      padding-bottom:24px;box-shadow:0 14px 24px rgba(43,29,14,.15)}
+  .sub-menu a{padding:8px 6px}
+  /* dark area under the menu: one tap anywhere on it closes the menu */
+  .nav-backdrop{position:fixed;inset:68px 0 0 0;z-index:40;background:rgba(43,29,14,.35);display:none}
+  .nav-backdrop.show{display:block}
+  body.nav-open{overflow:hidden}
+}
